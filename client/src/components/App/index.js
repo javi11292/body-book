@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Suspense } from "react"
 import {
   createMuiTheme,
   MuiThemeProvider,
@@ -10,7 +10,11 @@ import {
   DialogActions,
   Button,
 } from "@material-ui/core"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 import useLogic from "./useLogic"
+import { Box } from "./styled"
+
+const Login = React.lazy(() => import("pages/Login"))
 
 const theme = createMuiTheme({
   spacing: factor => `${0.5 * factor}rem`,
@@ -34,6 +38,21 @@ function App() {
           <Button onClick={handleClose(true)} color="primary">Actualizar</Button>
         </DialogActions>
       </Dialog>
+
+      <Box>
+        <BrowserRouter>
+          <Suspense fallback={null}>
+            <Switch>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route>
+                <span>Home</span>
+              </Route>
+            </Switch>
+          </Suspense>
+        </BrowserRouter>
+      </Box>
     </MuiThemeProvider>
   )
 }
