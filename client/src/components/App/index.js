@@ -11,10 +11,17 @@ import {
   Button,
 } from "@material-ui/core"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
+import Notifications from "components/Notifications"
 import useLogic from "./useLogic"
 import { Box } from "./styled"
 
-const Login = React.lazy(() => import("pages/Login"))
+const modules = [
+  import("pages/Login"),
+  import("pages/Register"),
+]
+
+const Login = React.lazy(() => modules[0])
+const Register = React.lazy(() => modules[1])
 
 const theme = createMuiTheme({
   spacing: factor => `${0.5 * factor}rem`,
@@ -39,12 +46,17 @@ function App() {
         </DialogActions>
       </Dialog>
 
+      <Notifications />
+
       <Box>
         <BrowserRouter>
           <Suspense fallback={null}>
             <Switch>
               <Route path="/login">
                 <Login />
+              </Route>
+              <Route path="/register">
+                <Register />
               </Route>
               <Route>
                 <span>Home</span>

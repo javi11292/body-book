@@ -1,7 +1,17 @@
-import Store, { getStore } from "libraries/Store"
+import getStore from "libraries/store"
 
-const state = {}
-
-const store = new Store(state)
-
-export default getStore(store)
+export default getStore({
+  notifications: {
+    value: [],
+    reducer: (state, { action, value }) => {
+      switch (action) {
+        case "add":
+          return [...state, value]
+        case "remove":
+          return state.slice(0, -1)
+        default:
+          return state
+      }
+    },
+  }
+})

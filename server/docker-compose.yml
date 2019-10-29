@@ -10,3 +10,6 @@ services:
     volumes:
       - ".:/code"
     restart: always
+  pg:
+    image: postgres
+    restart: always
