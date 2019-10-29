@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import useStore from "hooks/useStore"
+import { post } from "libraries/fetch"
 
 function useLogic() {
   const setNotification = useStore("notifications", false)
@@ -16,19 +17,12 @@ function useLogic() {
   }
 
   async function register() {
-    const response = await fetch(`${process.env.REACT_APP_SERVER}/register`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: user.username,
-        password: user.password,
-      }),
+    const { error } = await post("/register", {
+      username: user.username,
+      password: user.password,
     })
 
-    const { error } = await response.json()
-    setNotification({ action: "add", value: error })
+    if (error) setNotification({ action: "add", value: error })
   }
 
   function handleChange({ target }) {
