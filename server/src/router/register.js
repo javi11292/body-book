@@ -1,7 +1,5 @@
 const router = require("express").Router()
-const pg = require("./pg")
-
-router.get("/", (req, res) => res.sendStatus(200))
+const pg = require("../pg")
 
 router.post("/register", async (req, res) => {
   try {

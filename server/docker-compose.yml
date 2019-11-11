@@ -14,3 +14,7 @@ services:
     image: postgres
     container_name: postgres
     restart: always
+  redis:
+    image: redis
+    container_name: redis
+    restart: always

@@ -4,16 +4,19 @@
   "private": true,
   "scripts": {
     "deploy": "node scripts/deploy",
-    "postgres": "node -r dotenv/config postgres",
+    "postgres": "node -r dotenv/config scripts/postgres",
     "start": "docker-compose up",
     "start:development": "pm2-dev start ecosystem.config.js",
     "start:production": "pm2-runtime start ecosystem.config.js"
   },
   "dependencies": {
+    "connect-redis": "^4.0.3",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.0",
+    "express-session": "^1.17.0",
     "pg": "^7.12.1",
-    "pm2": "^3.5.0"
+    "pm2": "^3.5.0",
+    "redis": "^2.8.0"
   }
 }
