@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "deploy": "node scripts/deploy",
-    "postgres": "node postgres",
+    "postgres": "node -r dotenv/config postgres",
     "start": "docker-compose up",
     "start:development": "pm2-dev start ecosystem.config.js",
     "start:production": "pm2-runtime start ecosystem.config.js"
