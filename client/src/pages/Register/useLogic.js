@@ -17,12 +17,16 @@ function useLogic() {
   }
 
   async function register() {
-    const { error } = await post("/register", {
+    const { error, message } = await post("/register", {
       username: user.username,
       password: user.password,
     })
 
-    if (error) setNotification({ action: "add", value: error })
+    if (error) {
+      setNotification({ action: "add", value: error })
+    } else {
+      setNotification({ action: "add", value: message })
+    }
   }
 
   function handleChange({ target }) {

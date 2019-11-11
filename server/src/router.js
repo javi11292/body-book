@@ -6,15 +6,14 @@ router.get("/", (req, res) => res.sendStatus(200))
 router.post("/register", async (req, res) => {
   try {
     await pg.user.register(req.body.username, req.body.password)
-    res.sendStatus(200)
+    res.send({ message: "Usuario registrado con éxito" })
   } catch (error) {
     switch (error.code) {
       case "23505":
-        res.send({ error: "Nombre no disponible" })
+        res.send({ error: "Nombre de usuario no disponible" })
         return
       default:
-        console.error(error)
-        res.send({ error: "Error desconocido" })
+        res.send({ error: error.message })
         return
     }
   }

@@ -3,13 +3,14 @@ services:
   web:
     build: .
     container_name: web
+    restart: always
     environment:
-      - NODE_ENV=${NODE_ENV:-production}
+      - NODE_ENV
     ports:
-      - "80"
+      - "${PORT}:${PORT}"
     volumes:
       - ".:/code"
-    restart: always
   pg:
     image: postgres
+    container_name: postgres
     restart: always
