@@ -1,6 +1,10 @@
 import getStore from "libraries/store"
 
 export default getStore({
+  logged: {
+    value: undefined,
+    reducer: (state, value) => value,
+  },
   notifications: {
     value: [],
     reducer: (state, { action, value }) => {

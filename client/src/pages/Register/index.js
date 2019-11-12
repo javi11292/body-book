@@ -2,7 +2,7 @@ import React from "react"
 import { Grid } from "@material-ui/core"
 import { TextField } from "components"
 import { Button, Container, Title } from "pages/Login/styled"
-import useLogic from "./useLogic"
+import useLogic from "pages/Login/useLogic"
 
 function Register() {
   const { cancel, register, user, handleChange } = useLogic()
@@ -10,7 +10,7 @@ function Register() {
   return (
     <Container maxWidth="sm">
       <Grid container direction="column">
-        <Title>Register</Title>
+        <Title>Registrarse</Title>
         <TextField
           autoComplete="off"
           label="Usuario"

@@ -1,10 +1,9 @@
-const router = require("express").Router()
 const pg = require("../pg")
 
-router.post("/register", async (req, res) => {
+module.exports = async (req, res) => {
   try {
     await pg.user.register(req.body.username, req.body.password)
-    res.send({ message: "Usuario registrado con éxito" })
+    res.send({ message: "Registrado con éxito" })
   } catch (error) {
     switch (error.code) {
       case "23505":
@@ -15,6 +14,4 @@ router.post("/register", async (req, res) => {
         return
     }
   }
-})
-
-module.exports = router
+}

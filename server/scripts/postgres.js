@@ -6,6 +6,6 @@ init()
   .then(() => {
     console.log("DB initialized")
   })
-  .catch(() => {
-    console.log("DB already exists")
+  .catch(error => {
+    console.error(error)
   })
