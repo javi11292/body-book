@@ -27,7 +27,7 @@ function useLogic() {
     })
 
     if (error) {
-      setNotification({ action: "add", value: error })
+      setNotification({ action: "add", value: error, type: "error" })
     } else {
       window.dispatchEvent(new CustomEvent("status", { detail: true }))
     }
@@ -35,7 +35,7 @@ function useLogic() {
 
   async function register() {
     if (user.password !== user.confirmPassword) {
-      setNotification({ action: "add", value: "Las contraseñas no coinciden" })
+      setNotification({ action: "add", value: "Las contraseñas no coinciden", type: "error" })
       return
     }
 
@@ -45,7 +45,7 @@ function useLogic() {
     })
 
     if (error) {
-      setNotification({ action: "add", value: error })
+      setNotification({ action: "add", value: error, type: "error" })
     } else {
       setNotification({ action: "add", value: message })
       history.push("/login")

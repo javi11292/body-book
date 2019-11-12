@@ -7,10 +7,10 @@ export default getStore({
   },
   notifications: {
     value: [],
-    reducer: (state, { action, value }) => {
+    reducer: (state, { action, value, type }) => {
       switch (action) {
         case "add":
-          return [...state, value]
+          return [...state, { value, type }]
         case "remove":
           return state.slice(0, -1)
         default:
