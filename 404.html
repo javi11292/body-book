@@ -1,5 +1,5 @@
 <script>
   const url = window.location.href.match(/^((?:[^\/]*\/[^\/]*){3})(.*)/)
-  sessionStorage.setItem("url", url[2])
+  sessionStorage.setItem("location", url[2])
   window.location.href = url[1]
 </script>
