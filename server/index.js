@@ -6,7 +6,7 @@ const session = require("./middleware/session")
 const PORT = process.env.PORT
 const app = express()
 
-app.use(cors({ origin: process.env[process.env.NODE_ENV === "production" ? "ORIGIN_PROD" : "ORIGIN_DEV"], credentials: true }))
+app.use(cors({ origin: process.env[process.env.NODE_ENV === "production" ? "ORIGIN" : "ORIGIN_DEV"], credentials: true }))
 app.use(session)
 app.use(express.json())
 app.use(router)

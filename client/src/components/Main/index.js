@@ -2,13 +2,13 @@ import React from "react"
 import { Switch, Route, Redirect } from "react-router-dom"
 import useLogic from "./useLogic"
 
-const modules = [
-  import("pages/Login"),
-  import("pages/Register"),
-]
+const login = import("pages/Login")
+const register = import("pages/Register")
+const home = import("pages/Home")
 
-const Login = React.lazy(() => modules[0])
-const Register = React.lazy(() => modules[1])
+const Login = React.lazy(() => login)
+const Register = React.lazy(() => register)
+const Home = React.lazy(() => home)
 
 function Main() {
   const { logged } = useLogic()
@@ -27,7 +27,7 @@ function Main() {
       </Route>
       <Route>
         {!logged && <Redirect to="/login" />}
-        <span>Home</span>
+        <Home />
       </Route>
     </Switch>
   )

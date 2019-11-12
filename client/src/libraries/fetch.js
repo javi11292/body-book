@@ -1,6 +1,8 @@
+const host = process.env[process.env.NODE_ENV === "development" ? "REACT_APP_SERVER_DEV" : "REACT_APP_SERVER"]
+
 export async function post(path, body) {
   try {
-    const response = await fetch(`${process.env.REACT_APP_SERVER}${path}`, {
+    const response = await fetch(`${host}${path}`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -24,7 +26,7 @@ export async function post(path, body) {
 
 export async function get(path) {
   try {
-    const response = await fetch(`${process.env.REACT_APP_SERVER}${path}`, {
+    const response = await fetch(`${host}${path}`, {
       credentials: "include",
     })
 
