@@ -1,5 +1,5 @@
 <script>
-  const url = window.location.href.split("/")
-  sessionStorage.setItem("url", `/${url.slice(4).join("/")}`)
-  window.location.href = url.slice(0,4).join("/")
+  const url = window.location.href.match(/^((?:[^\/]*\/[^\/]*){3})(.*)/)
+  sessionStorage.setItem("url", url[2])
+  window.location.href = url[1]
 </script>
