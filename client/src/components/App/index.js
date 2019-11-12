@@ -42,7 +42,7 @@ function App() {
       <Notifications />
 
       <Box>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Suspense fallback={null}>
             <Main />
           </Suspense>
