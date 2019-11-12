@@ -1,5 +1,5 @@
 <script>
   const url = window.location.href.split("/")
-  sessionStorage.setItem("url", url.slice(5).join("/"))
+  sessionStorage.setItem("url", `/${url.slice(4).join("/")}`)
   window.location.href = url.slice(0,4).join("/")
 </script>
