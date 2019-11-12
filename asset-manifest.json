@@ -2,8 +2,8 @@
   "files": {
     "static/js/0.c68f0224.chunk.js": "/body-book/static/js/0.c68f0224.chunk.js",
     "static/js/0.c68f0224.chunk.js.map": "/body-book/static/js/0.c68f0224.chunk.js.map",
-    "main.js": "/body-book/static/js/main.b48e9d54.chunk.js",
-    "main.js.map": "/body-book/static/js/main.b48e9d54.chunk.js.map",
+    "main.js": "/body-book/static/js/main.f10b252f.chunk.js",
+    "main.js.map": "/body-book/static/js/main.f10b252f.chunk.js.map",
     "runtime-main.js": "/body-book/static/js/runtime-main.30ef9b6f.js",
     "runtime-main.js.map": "/body-book/static/js/runtime-main.30ef9b6f.js.map",
     "static/js/3.5170938e.chunk.js": "/body-book/static/js/3.5170938e.chunk.js",
@@ -13,12 +13,12 @@
     "static/js/5.5f3f08c5.chunk.js": "/body-book/static/js/5.5f3f08c5.chunk.js",
     "static/js/5.5f3f08c5.chunk.js.map": "/body-book/static/js/5.5f3f08c5.chunk.js.map",
     "index.html": "/body-book/index.html",
-    "precache-manifest.5865e43756f58475c56dd95f7bc78209.js": "/body-book/precache-manifest.5865e43756f58475c56dd95f7bc78209.js",
+    "precache-manifest.4ca4ae0e70bc372124e24dc6b8f4c9f7.js": "/body-book/precache-manifest.4ca4ae0e70bc372124e24dc6b8f4c9f7.js",
     "service-worker.js": "/body-book/service-worker.js"
   },
   "entrypoints": [
     "static/js/runtime-main.30ef9b6f.js",
     "static/js/3.5170938e.chunk.js",
-    "static/js/main.b48e9d54.chunk.js"
+    "static/js/main.f10b252f.chunk.js"
   ]
 }
