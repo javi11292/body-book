@@ -9,5 +9,8 @@ module.exports = session({
   secret: "secret",
   resave: false,
   saveUninitialized: false,
-  secure: process.env.NODE_ENV === "production",
+  cookie: {
+    sameSite: "none",
+    secure: process.env.NODE_ENV === "production",
+  },
 })

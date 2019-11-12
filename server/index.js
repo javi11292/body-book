@@ -6,6 +6,7 @@ const session = require("./middleware/session")
 const PORT = process.env.PORT
 const app = express()
 
+app.set("trust proxy", 1)
 app.use(cors({ origin: process.env[process.env.NODE_ENV === "production" ? "ORIGIN" : "ORIGIN_DEV"], credentials: true }))
 app.use(session)
 app.use(express.json())
