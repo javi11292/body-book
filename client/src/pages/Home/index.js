@@ -4,4 +4,4 @@ function Home() {
   return <span>hola</span>
 }
 
-export default Home
+export default React.memo(Home)

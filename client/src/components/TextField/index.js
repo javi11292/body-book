@@ -8,4 +8,4 @@ function TextField(props) {
   return <CoreTextField variant="filled" {...props} />
 }
 
-export default TextField
+export default React.memo(TextField)
