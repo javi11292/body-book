@@ -13,8 +13,6 @@ const Home = React.lazy(() => home)
 function Main() {
   const { logged } = useLogic()
 
-  if (logged === undefined) return null
-
   return (
     <Switch>
       <Route path="/login">
@@ -26,7 +24,7 @@ function Main() {
         <Register />
       </Route>
       <Route>
-        {!logged && <Redirect to="/login" />}
+        {logged === false && <Redirect to="/login" />}
         <Home />
       </Route>
     </Switch>
