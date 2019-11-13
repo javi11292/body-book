@@ -1,7 +1,11 @@
 import getStore from "libraries/store"
 
 export default getStore({
-  logged: {
+  contacts: {
+    value: undefined,
+    reducer: (state, value) => value,
+  },
+  activeChat: {
     value: undefined,
     reducer: (state, value) => value,
   },

@@ -1,11 +1,10 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { get } from "libraries/fetch"
-import useStore from "hooks/useStore"
 
 function useLogic() {
   const history = useHistory()
-  const [logged, setLogged] = useStore("logged")
+  const [logged, setLogged] = useState()
 
   useEffect(() => {
     const location = sessionStorage.getItem("location")
@@ -17,8 +16,8 @@ function useLogic() {
 
   useEffect(() => {
     async function checkSession() {
-      const { logged } = await get("/status")
-      setLogged(!!logged)
+      const { user } = await get("/status")
+      setLogged(!!user)
     }
 
     checkSession()

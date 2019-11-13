@@ -1,14 +1,11 @@
 const router = require("express").Router()
-const register = require("./register")
-const login = require("./login")
 const status = require("./status")
+const user = require("./user")
 
 router.get("/", (req, res) => res.sendStatus(200))
 
 router.get("/status", status)
 
-router.post("/login", login)
-
-router.post("/register", register)
+router.use("/user", user)
 
 module.exports = router

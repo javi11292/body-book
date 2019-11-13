@@ -21,7 +21,7 @@ function useLogic() {
   }
 
   async function login() {
-    const { error } = await post("/login", {
+    const { error } = await post("/user/login", {
       username: user.username,
       password: user.password,
     })
@@ -39,7 +39,7 @@ function useLogic() {
       return
     }
 
-    const { error, message } = await post("/register", {
+    const { error, message } = await post("/user/register", {
       username: user.username,
       password: user.password,
     })
