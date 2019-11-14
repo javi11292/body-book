@@ -16,8 +16,8 @@ function useLogic() {
 
   useEffect(() => {
     async function checkSession() {
-      const { user } = await get("/status")
-      setLogged(!!user)
+      const { message } = await get("/status")
+      setLogged(!!message)
     }
 
     checkSession()

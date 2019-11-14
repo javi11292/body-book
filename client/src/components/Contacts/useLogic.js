@@ -8,14 +8,18 @@ function useLogic() {
 
   useEffect(() => {
     async function fetchContacts() {
-      const contacts = await get("/user/contacts")
-      setContacts(contacts)
+      const { message } = await get("/user/contacts")
+      setContacts(message)
     }
 
     if (!contacts) fetchContacts()
   }, [contacts, setContacts])
 
-  return { activeChat, setActiveChat, contacts }
+  function selectContact({ currentTarget }) {
+    setActiveChat({ username: currentTarget.dataset.value })
+  }
+
+  return { activeChat, selectContact, contacts }
 }
 
 export default useLogic

@@ -1,17 +1,33 @@
 import React from "react"
+import { List, ListItem, ListItemText } from "@material-ui/core"
+import Chat from "components/Chat"
 import { Container } from "./styled"
 import useLogic from "./useLogic"
 
-function addContact({ username }) {
-  return username
+function addContact({ selectContact }) {
+  return ({ username }) => (
+    <ListItem
+      button
+      onClick={selectContact}
+      data-value={username}
+      key={username}>
+      <ListItemText primary={username} secondary="&nbsp;" />
+    </ListItem>
+  )
 }
 
 function Contacts() {
-  const { contacts } = useLogic()
+  const { contacts, selectContact, activeChat } = useLogic()
 
   return (
     <Container>
-      {contacts && contacts.map(addContact)}
+      {activeChat
+        ? <Chat {...activeChat} />
+        : (
+          <List>
+            {contacts && contacts.map(addContact({ selectContact }))}
+          </List>
+        )}
     </Container>
   )
 }

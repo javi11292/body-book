@@ -29,7 +29,7 @@ router.post("/register", async (req, res) => {
 
 router.get("/contacts", async (req, res) => {
   try {
-    res.send(await pg.user.getContacts(req.session.user))
+    res.send({ message: await pg.user.getContacts(req.session.user) })
   } catch (error) {
     res.send({ error: error.message })
   }

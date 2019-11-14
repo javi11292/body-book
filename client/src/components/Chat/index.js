@@ -1,10 +1,10 @@
 import React from "react"
 import { Container } from "./styled"
 
-function Chat() {
+function Chat({ username }) {
   return (
     <Container>
-      Chat
+      <span>Chat with {username}</span>
     </Container>
   )
 }
