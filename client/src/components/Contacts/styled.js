@@ -8,4 +8,5 @@ export const Container = styled("div")({
 
 export const ListItemText = styled(CoreListItemText)({
   overflow: "hidden",
+  whiteSpace: "nowrap",
 })
