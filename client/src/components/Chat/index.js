@@ -1,14 +1,23 @@
 import React from "react"
-import { Container, Input, Box, Message } from "./styled"
+import { format } from "date-fns"
+import { Container, Input, Box, Message, DoneIcon, Info, IconContainer, InfoPlaceholder } from "./styled"
 import useLogic from "./useLogic"
 
 function addMessage(user) {
-  return ({ from, message }, index) => {
+  return ({ from, message, received, read, date }, index) => {
     return (
       <Message
         local={from === user}
         key={index}>
         {message}
+        <InfoPlaceholder />
+        <Info>
+          {format(date, "HH:mm")}
+          <IconContainer>
+            {user === from && <DoneIcon fontSize="inherit" received={received} />}
+            {user === from && <DoneIcon fontSize="inherit" received={received} read={read} />}
+          </IconContainer>
+        </Info>
       </Message>
     )
   }

@@ -16,9 +16,7 @@ import useLogic from "./useLogic"
 import { Box } from "./styled"
 import Main from "components/Main"
 
-const theme = createMuiTheme({
-  spacing: factor => `${0.5 * factor}rem`,
-})
+const theme = createMuiTheme()
 
 function App() {
   const { update, handleClose } = useLogic()

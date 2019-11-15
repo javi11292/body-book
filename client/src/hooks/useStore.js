@@ -1,6 +1,7 @@
 import getStore from "libraries/store"
+import socket from "libraries/socket"
 
-export default getStore({
+const store = {
   user: {
     value: undefined,
     reducer: (state, value) => value,
@@ -15,10 +16,28 @@ export default getStore({
   },
   chats: {
     value: {},
-    reducer: (state, { from, message, username }) => ({
-      ...state,
-      [username]: state[username] ? [...state[username], { message, from }] : [{ message, from }],
-    }),
+    reducer: (state, { user, message }) => {
+      const entries = message instanceof Array ? message : [message]
+
+      function addEntry(acc, entry) {
+        const message = typeof entry === "string" ? JSON.parse(entry) : entry
+        const { to, from, date } = message
+        const id = from === user ? to : from
+        const userChats = acc[id] || {}
+
+        if (from !== user && !message.received) socket.emit("received", message)
+
+        return {
+          ...acc,
+          [id]: {
+            ...userChats,
+            [date]: message,
+          },
+        }
+      }
+
+      return entries.reduce(addEntry, state)
+    },
   },
   notifications: {
     value: [],
@@ -33,4 +52,6 @@ export default getStore({
       }
     },
   }
-})
+}
+
+export default getStore(store)

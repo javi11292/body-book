@@ -14,6 +14,6 @@ export const Container = styled("div")(({ theme }) => ({
   overflow: "auto",
 }))
 
-export const Icon = styled(IconButton)(({ theme }) => ({
-  marginRight: theme.spacing(2),
-}))
+export const Icon = styled(IconButton)({
+  marginRight: "1rem",
+})

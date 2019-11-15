@@ -5,18 +5,19 @@ import socket from "libraries/socket"
 function useLogic() {
   const [activeChat, setActiveChat] = useStore("activeChat")
   const addChat = useStore("chats", false)
+  const [user] = useStore("user")
 
   useEffect(() => {
     socket.connect()
     socket.on("message", message => {
-      addChat(message)
+      addChat({ user, message })
     })
 
     return () => {
       socket.off("message")
       socket.disconnect()
     }
-  }, [addChat])
+  }, [user, addChat])
 
   function closeChat() {
     setActiveChat({ ...activeChat, open: false })

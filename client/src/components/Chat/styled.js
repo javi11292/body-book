@@ -1,5 +1,6 @@
 import React from "react"
 import { styled, Paper } from "@material-ui/core"
+import { Done } from "@material-ui/icons"
 import { TextField } from "components"
 
 export const Container = styled("div")({
@@ -9,16 +10,30 @@ export const Container = styled("div")({
   gridTemplateRows: "1fr auto",
 })
 
-export const Input = styled(TextField)(({ theme }) => ({
-  margin: theme.spacing(1),
-}))
+export const Input = styled(TextField)({
+  margin: "0.5rem",
+})
 
-export const Box = styled("div")(({ theme }) => ({
+export const Box = styled("div")({
   overflowY: "auto",
   wordBreak: "break-word",
   display: "flex",
   flexDirection: "column",
-  margin: theme.spacing(0.5),
+  margin: "0.25rem",
+})
+
+export const DoneIcon = styled(
+  /**
+   * @param {import("@material-ui/core/SvgIcon").SvgIconProps} props 
+   */
+  function DoneIcon({ read, received, ...props }) {
+    return <Done {...props} />
+  }
+)(({ read, received }) => ({
+  position: "relative",
+  visibility: !received || read === false ? "hidden" : undefined,
+  gridArea: "icon",
+  top: read ? "0.28rem" : undefined,
 }))
 
 export const Message = styled(
@@ -28,10 +43,32 @@ export const Message = styled(
   function Message({ local, ...props }) {
     return <Paper {...props} />
   }
-)(({ theme, local }) => ({
+)(({ local }) => ({
+  position: "relative",
+  borderRadius: "1rem",
   display: "inline",
-  margin: theme.spacing(0.5),
-  padding: theme.spacing(2),
+  margin: "0.25rem",
+  padding: "1rem",
   alignSelf: local ? "flex-end" : "flex-start",
   backgroundColor: local ? "#FFFF80" : "inherit",
 }))
+
+export const Info = styled("span")({
+  position: "absolute",
+  bottom: "0.5rem",
+  right: "0.75rem",
+  fontSize: "0.75rem",
+  color: "grey",
+})
+
+export const InfoPlaceholder = styled("span")({
+  width: "3.5rem",
+  display: "inline-block",
+})
+
+export const IconContainer = styled("span")({
+  position: "relative",
+  display: "inline-grid",
+  gridTemplateAreas: "icon",
+  marginLeft: "0.1rem",
+})
