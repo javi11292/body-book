@@ -1,17 +1,22 @@
 import React from "react"
-import { Container, Input, Box } from "./styled"
+import { Container, Input, Box, Message } from "./styled"
 import useLogic from "./useLogic"
 
-function addMessage({ from, message }, index) {
-  return (
-    <div key={index}>
-      {message}
-    </div>
-  )
+function addMessage(user) {
+  return ({ from, message }, index) => {
+    return (
+      <Message
+        local={from === user}
+        key={index}>
+        {message}
+      </Message>
+    )
+  }
 }
 
 function Chat() {
   const {
+    user,
     handleScroll,
     chatRef,
     handleKeyDown,
@@ -25,7 +30,7 @@ function Chat() {
       <Box
         onScroll={handleScroll}
         ref={chatRef}>
-        {chat.map(addMessage)}
+        {chat.map(addMessage(user))}
       </Box>
       <Input
         autoComplete="off"

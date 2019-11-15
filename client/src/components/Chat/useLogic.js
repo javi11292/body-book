@@ -8,6 +8,7 @@ function useLogic() {
   const [message, setMessage] = useState("")
   const [activeChat] = useStore("activeChat")
   const [chats] = useStore("chats")
+  const [user] = useStore("user")
 
   useLayoutEffect(() => {
     if (!scrolled.current) chatRef.current.scrollTop = chatRef.current.scrollHeight - chatRef.current.offsetHeight
@@ -29,6 +30,7 @@ function useLogic() {
   }
 
   return {
+    user,
     handleScroll,
     chatRef,
     handleKeyDown,

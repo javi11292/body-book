@@ -30,7 +30,7 @@ function useLogic() {
     if (error) {
       setNotification({ action: "add", value: error, type: "error" })
     } else {
-      window.dispatchEvent(new CustomEvent("status", { detail: true }))
+      window.dispatchEvent(new CustomEvent("status", { detail: user.username }))
     }
   }
 
