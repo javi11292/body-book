@@ -21,8 +21,8 @@ function Contacts() {
 
   return (
     <Container>
-      {activeChat
-        ? <Chat {...activeChat} />
+      {activeChat.open
+        ? <Chat />
         : (
           <List>
             {contacts && contacts.map(addContact({ selectContact }))}

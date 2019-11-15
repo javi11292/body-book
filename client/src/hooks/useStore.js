@@ -1,13 +1,24 @@
 import getStore from "libraries/store"
 
 export default getStore({
+  user: {
+    value: undefined,
+    reducer: (state, value) => value,
+  },
   contacts: {
     value: undefined,
     reducer: (state, value) => value,
   },
   activeChat: {
-    value: undefined,
+    value: {},
     reducer: (state, value) => value,
+  },
+  chats: {
+    value: {},
+    reducer: (state, { from, message, username }) => ({
+      ...state,
+      [username]: state[username] ? [...state[username], { message, from }] : [{ message, from }],
+    }),
   },
   notifications: {
     value: [],

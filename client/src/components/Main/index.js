@@ -11,20 +11,20 @@ const Register = React.lazy(() => register)
 const Home = React.lazy(() => home)
 
 function Main() {
-  const { logged } = useLogic()
+  const { user } = useLogic()
 
   return (
     <Switch>
       <Route path="/login">
-        {logged && <Redirect to="/" />}
+        {user && <Redirect to="/" />}
         <Login />
       </Route>
       <Route path="/register">
-        {logged && <Redirect to="/" />}
+        {user && <Redirect to="/" />}
         <Register />
       </Route>
       <Route>
-        {logged === false && <Redirect to="/login" />}
+        {user === null && <Redirect to="/login" />}
         <Home />
       </Route>
     </Switch>

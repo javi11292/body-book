@@ -1,5 +1,6 @@
 const express = require("express")
 const router = require("./src/router")
+const socket = require("./src/socket")
 const cors = require("cors")
 const session = require("./middleware/session")
 
@@ -11,4 +12,7 @@ app.use(cors({ origin: process.env[process.env.NODE_ENV === "production" ? "ORIG
 app.use(session)
 app.use(express.json())
 app.use(router)
-app.listen(PORT)
+
+const server = app.listen(PORT)
+
+socket(server)

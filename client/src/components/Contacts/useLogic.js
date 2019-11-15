@@ -16,7 +16,7 @@ function useLogic() {
   }, [contacts, setContacts])
 
   function selectContact({ currentTarget }) {
-    setActiveChat({ username: currentTarget.dataset.value })
+    setActiveChat({ open: true, username: currentTarget.dataset.value })
   }
 
   return { activeChat, selectContact, contacts }

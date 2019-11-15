@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { useHistory } from "react-router-dom"
 import useStore from "hooks/useStore"
 import { post } from "libraries/fetch"
 
 function useLogic() {
+  const inputRefs = useRef([])
   const history = useHistory()
   const setNotification = useStore("notifications", false)
   const [user, setUser] = useState({
@@ -56,7 +57,28 @@ function useLogic() {
     setUser(user => ({ ...user, [target.id]: target.value }))
   }
 
-  return { cancel, navigateToRegister, register, login, user, handleChange }
+  function handleKeyDown({ key, target }) {
+    if (key === "Enter") {
+      if (target.id === "username") inputRefs.current.password.focus()
+
+      if (target.id === "password") {
+        if (inputRefs.current.confirmPassword) {
+          inputRefs.current.password.focus()
+        } else {
+          login()
+        }
+      }
+
+      if (target.id === "confirmPassword") register()
+    }
+  }
+
+  function addRef(element) {
+    if (!element) return
+    inputRefs.current[element.id] = element
+  }
+
+  return { cancel, navigateToRegister, register, login, user, handleChange, handleKeyDown, addRef }
 }
 
 export default useLogic

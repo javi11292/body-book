@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { get } from "libraries/fetch"
+import useStore from "hooks/useStore"
 
 function useLogic() {
   const history = useHistory()
-  const [logged, setLogged] = useState()
+  const [user, setUser] = useStore("user")
 
   useEffect(() => {
     const location = sessionStorage.getItem("location")
@@ -17,21 +18,21 @@ function useLogic() {
   useEffect(() => {
     async function checkSession() {
       const { message } = await get("/status")
-      setLogged(!!message)
+      setUser(message || null)
     }
 
     checkSession()
 
     function callback({ detail }) {
-      setLogged(detail)
+      setUser(detail)
     }
 
     window.addEventListener("status", callback)
 
     return () => window.removeEventListener("status", callback)
-  }, [setLogged])
+  }, [setUser])
 
-  return { logged }
+  return { user }
 }
 
 export default useLogic

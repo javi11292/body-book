@@ -4,7 +4,7 @@ const pg = require("../pg")
 router.post("/login", async (req, res) => {
   try {
     await pg.user.login(req.body.username, req.body.password)
-    req.session.user = req.body.username
+    req.session.username = req.body.username
     res.sendStatus(200)
   } catch (error) {
     res.send({ error: error.message })
@@ -29,7 +29,7 @@ router.post("/register", async (req, res) => {
 
 router.get("/contacts", async (req, res) => {
   try {
-    res.send({ message: await pg.user.getContacts(req.session.user) })
+    res.send({ message: await pg.user.getContacts(req.session.username) })
   } catch (error) {
     res.send({ error: error.message })
   }

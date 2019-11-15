@@ -14,7 +14,7 @@ function user(pool) {
 
   async function getContacts(username) {
     if (!username) throw new Error("Usuario inválido")
-    const { rows } = await pool.query("SELECT username FROM users")
+    const { rows } = await pool.query("SELECT username FROM users WHERE username != $1", [username])
     return rows
   }
 
