@@ -12,6 +12,8 @@ function addMessage({ from, message }, index) {
 
 function Chat() {
   const {
+    handleScroll,
+    chatRef,
     handleKeyDown,
     message,
     handleChange,
@@ -20,7 +22,9 @@ function Chat() {
 
   return (
     <Container>
-      <Box>
+      <Box
+        onScroll={handleScroll}
+        ref={chatRef}>
         {chat.map(addMessage)}
       </Box>
       <Input
