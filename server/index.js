@@ -1,7 +1,7 @@
 const express = require("express")
+const cors = require("cors")
 const router = require("./src/router")
 const socket = require("./src/socket")
-const cors = require("cors")
 const session = require("./middleware/session")
 
 const PORT = process.env.PORT
